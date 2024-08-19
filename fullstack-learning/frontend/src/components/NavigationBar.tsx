@@ -22,7 +22,14 @@ interface NavigationBarProps {
 const NavigationBar: React.FC<NavigationBarProps> = ({ brandName, imageSrcPath, navItems }) => {
   const navigate = useNavigate();
 
-  const handleNavigation = (path: string) => {
+  const handleNavigation = async (path: string) => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/items/');
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
     navigate(path);
   };
 
