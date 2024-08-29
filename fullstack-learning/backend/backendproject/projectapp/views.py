@@ -15,7 +15,7 @@ class ExercisesViewSet(viewsets.ModelViewSet):
     serializer_class = ExercisesSerializer
 
 class SearchView(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         query = request.query_params.get('query', None)
         if query:
             items = Item.objects.filter(name__icontains=query)
