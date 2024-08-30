@@ -1,36 +1,42 @@
 import React, { useState } from 'react';
-import Tile from '../components/Tile';
 import MainSearchBar from '../components/MainSearchBar';
+import ExerciseTile from '../components/ExerciseTile';
+import ItemTile from '../components/ItemTile';
 import { Item, Exercise, SearchResult } from '../interfaces';
 import { Category } from '../constants/Category';
+import amazon_icon from '../assets/amazon_small_icon.png';
+import youtube_icon from '../assets/youtube_small_icon.png';
+
 
 const HomePage: React.FC = () => {
   const [results, setResults] = useState<SearchResult>({ items: [], exercises: [] }); 
-  
   return (
     <div>
       <MainSearchBar setResults={setResults} />
       {results.items.length > 0 || results.exercises.length > 0 ? (
         <>
           {results.items.map((item: Item) => (
-            <Tile
+            <ItemTile
               key={item.id}
               title={item.name}
-              bodyText={`Description: ${item.description}, Price: $${item.price}`}
-              pxHeight='250'
-              category={Category.Item}
+              description={item.description}
+              price={item.price}
+              pxHeight='300'
               urlLink={'www.amazon.com'}
-            />
+              imageUrl={amazon_icon}/>
           ))}
           {results.exercises.map((exercise: Exercise) => (
-            <Tile
+            <ExerciseTile
               key={exercise.id}
               title={exercise.name}
-              bodyText={`Muscle Group: ${exercise.muscleGroup}, Difficulty: ${exercise.difficultyLevel}, Equipment: ${exercise.equpimentNeeded}`}
-              pxHeight='250' 
-              category={Category.Exercise} 
-              urlLink={'www.youtube.com'}            
-            />
+              muscleGroup={exercise.muscleGroup} 
+              instructions={exercise.instructions}
+              difficultyLevel={exercise.difficulty_level} 
+              equipmentNeeded={exercise.equipment_needed}
+              pxHeight='450'
+              category={Category.Exercise}
+              urlLink={'www.youtube.com'}
+              imageUrl={youtube_icon}/>
           ))}
         </>
       ) : (

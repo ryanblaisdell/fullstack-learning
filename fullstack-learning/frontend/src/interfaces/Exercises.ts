@@ -1,6 +1,6 @@
 export interface Exercise {
-    difficultyLevel: string;
-    equpimentNeeded: string;
+    difficulty_level: string;
+    equipment_needed: string;
     id: number;
     instructions: string;
     muscleGroup: string;

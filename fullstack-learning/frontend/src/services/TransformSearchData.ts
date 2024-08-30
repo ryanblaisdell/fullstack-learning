@@ -12,8 +12,8 @@ export const transformSearchData = (data: { items: Item[], exercises: Exercise[]
         itemPrice: item.price,
       })),
       exercises: data.exercises.map((exercise: Exercise) => ({
-        difficultyLevel: exercise.difficultyLevel,
-        equpimentNeeded: exercise.equpimentNeeded,
+        difficulty_level: exercise.difficulty_level,
+        equipment_needed: exercise.equipment_needed,
         id: exercise.id,
         instructions: exercise.instructions,
         muscleGroup: exercise.muscleGroup,
